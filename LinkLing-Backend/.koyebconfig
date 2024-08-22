@@ -1,4 +1,0 @@
-build:
-  command: ./gradlew build
-run:
-  command: java -jar build/libs/*.jar
