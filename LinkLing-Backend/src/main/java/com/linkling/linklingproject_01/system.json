@@ -1,0 +1,7 @@
+{
+  "build": {
+    "env": {
+      "BP_JVM_VERSION": "17"
+    }
+  }
+}
