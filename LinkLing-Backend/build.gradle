@@ -36,6 +36,12 @@ bootJar {
     archiveFileName = "linklingproject_01.jar"
 }
 
+tasks.register('printBuildDir') {
+    doLast {
+        println "Build directory: ${buildDir}"
+        println "JAR file location: ${bootJar.archiveFile.get()}"
+    }
+}
 
 test {
     enabled = false

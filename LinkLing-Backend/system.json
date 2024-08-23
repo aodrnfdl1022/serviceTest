@@ -5,6 +5,6 @@
     }
   },
   "run": {
-    "cmd": "java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/linklingproject_01.jar"
+    "cmd": "java -Dserver.port=$PORT $JAVA_OPTS -jar $(find . -name '*.jar' | head -n 1)"
   }
 }
