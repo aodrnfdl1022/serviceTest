@@ -53,6 +53,11 @@ dependencies {
     // email auth
     implementation 'org.springframework.boot:spring-boot-starter-mail'
 
+
+//         Koyeb Test
+           ' <groupId>org.springframework.boot</groupId>'
+    '<artifactId>spring-boot-starter-actuator</artifactId>'
+//
 }
 
 tasks.named('test') {
