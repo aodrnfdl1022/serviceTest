@@ -32,6 +32,11 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
 }
+bootJar {
+    archiveFileName = "linklingproject_01.jar"
+}
+
+
 test {
     enabled = false
 }

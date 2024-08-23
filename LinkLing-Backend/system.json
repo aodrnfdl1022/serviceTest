@@ -1,10 +1,10 @@
 {
   "build": {
-    "buildpacks": [
-      { "url": "heroku/jvm" }
-    ],
     "env": {
       "BP_JVM_VERSION": "17"
     }
+  },
+  "run": {
+    "cmd": "java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/linklingproject_01.jar"
   }
 }
