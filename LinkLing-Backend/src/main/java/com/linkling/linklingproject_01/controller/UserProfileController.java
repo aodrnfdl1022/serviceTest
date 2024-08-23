@@ -21,14 +21,15 @@ public class UserProfileController {
         return userProfileService.getUserProfile(id)
                 .map(userData -> {
                     Map<String, Object> response = new HashMap<>();
-                    response.put("user_profile", userData.getUserProfile());
+                    response.put("user_profile", userData.getUserProfile() != null ? userData.getUserProfile() : "");
                     response.put("user_id", userData.getUserId());
                     response.put("user_name", userData.getUserName());
                     response.put("user_gender", userData.getUserGender());
                     response.put("online", true);
                     response.put("follower", 0);
                     response.put("user_nation", userData.getUserNation());
-                    response.put("user_info", userData.getUserInfo());
+                    response.put("user_info", userData.getUserInfo() != null ? userData.getUserInfo() : "");
+                    response.put("user_lang", userData.getUserLang());
                     return ResponseEntity.ok(response);
                 })
                 .orElse(ResponseEntity.notFound().build());

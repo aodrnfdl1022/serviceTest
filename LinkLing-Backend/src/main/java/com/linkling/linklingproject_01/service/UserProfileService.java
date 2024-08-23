@@ -4,10 +4,12 @@ import com.linkling.linklingproject_01.model.User;
 import com.linkling.linklingproject_01.model.UserLanguage;
 import com.linkling.linklingproject_01.repository.UserDAO;
 import com.linkling.linklingproject_01.repository.UserLanguageDAO;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,8 +19,15 @@ public class UserProfileService {
     private final UserDAO userDAO;
     private final UserLanguageDAO userLanguageDAO;
 
-    public Optional<User> getUserProfile(String userId) {
-        return userDAO.findByUserId(userId);
+    public Optional<UserProfileDTO> getUserProfile(String userId) {
+        return userDAO.findByUserId(userId).map(user -> {
+            UserLanguage userLanguage = userLanguageDAO.findByUserEmail(user.getUserEmail())
+                    .orElse(new UserLanguage());
+            List<String> languages = userLanguage.getUserLang() != null ?
+                    Arrays.asList(userLanguage.getUserLang().split(",")) :
+                    List.of();
+            return new UserProfileDTO(user, languages);
+        });
     }
 
     @Transactional
@@ -44,5 +53,23 @@ public class UserProfileService {
             return true;
         }
         return false;
+    }
+
+    public static class UserProfileDTO {
+        private final User user;
+        @Getter
+        private final List<String> userLang;
+
+        public UserProfileDTO(User user, List<String> userLang) {
+            this.user = user;
+            this.userLang = userLang;
+        }
+
+        public String getUserProfile() { return user.getUserProfile(); }
+        public String getUserId() { return user.getUserId(); }
+        public String getUserName() { return user.getUserName(); }
+        public String getUserGender() { return user.getUserGender(); }
+        public String getUserNation() { return user.getUserNation(); }
+        public String getUserInfo() { return user.getUserInfo(); }
     }
 }
