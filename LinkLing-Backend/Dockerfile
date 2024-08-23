@@ -1,5 +1,5 @@
 FROM openjdk:17-jdk-slim
-WORKDIR /workspace
+WORKDIR /app
 COPY . .
 RUN chmod +x ./gradlew
 RUN ./gradlew build -x test
