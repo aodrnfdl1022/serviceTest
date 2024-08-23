@@ -1,0 +1,10 @@
+{
+  "build": {
+    "buildpacks": [
+      { "url": "heroku/jvm" }
+    ],
+    "env": {
+      "BP_JVM_VERSION": "17"
+    }
+  }
+}
