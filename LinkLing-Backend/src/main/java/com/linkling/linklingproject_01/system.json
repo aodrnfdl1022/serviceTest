@@ -3,5 +3,8 @@
     "env": {
       "BP_JVM_VERSION": "17"
     }
+  },
+  "buildpack": {
+    "url": "https://github.com/heroku/heroku-buildpack-gradle.git"
   }
 }
